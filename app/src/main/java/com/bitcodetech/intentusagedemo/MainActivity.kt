@@ -18,6 +18,14 @@ class MainActivity : AppCompatActivity() {
 
         StrictMode.setVmPolicy( StrictMode.VmPolicy.Builder().build())
 
+        binding.btnSendBr.setOnClickListener {
+            val intent = Intent("in.bitcode.download.COMPLETE")
+            intent.putExtra("path", "/storage/emulated/0/bitcode")
+
+            //sendBroadcast(intent)
+            sendStickyBroadcast(intent)
+        }
+
         binding.img.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
